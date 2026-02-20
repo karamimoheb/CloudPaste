@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       from_panel:
-        description: "是否由部署控制面板触发 / triggered from deployment control panel"
+        description: "Whether triggered by deployment control panel / triggered from deployment control panel"
         required: false
         default: "false"
   repository_dispatch:
@@ -20,13 +20,13 @@ jobs:
     outputs:
       should_deploy: ${{ steps.check.outputs.should_deploy }}
     steps:
-      - name: 📥 检出代码
+      - name: 📥 Check out code
         uses: actions/checkout@v4
 
-      - name: 🔍 检查部署配置
+      - name: 🔍 Check deployment configuration
         id: check
         run: |
-          # 手动触发时（workflow_dispatch / repository_dispatch），总是部署，忽略自动部署开关
+          # When triggered manually（workflow_dispatch / repository_dispatch），总是部署，忽略自动部署开关
           if [[ "${{ github.event_name }}" == "repository_dispatch" ]]; then
             echo "should_deploy=true" >> $GITHUB_OUTPUT
             echo "✅ 手动触发（repository_dispatch），忽略开关，允许部署"
@@ -35,11 +35,11 @@ jobs:
 
           if [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ github.event.inputs.from_panel }}" != "true" ]]; then
             echo "should_deploy=true" >> $GITHUB_OUTPUT
-            echo "✅ 手动触发（workflow_dispatch），忽略开关，允许部署"
+            echo "✅ manual trigger（workflow_dispatch），ignore switch，Allow deployment"
             exit 0
           fi
 
-          # 自动触发（push 或控制面板触发）根据仓库级变量决定是否部署
+          # Automatic trigger（push or control panel trigger）Determine whether to deploy based on warehouse-level variables
           BACKEND_ENABLED="${{ vars.BACKEND_DEPLOY }}"
           # 默认行为：如果仓库变量未设置，视为已开启自动部署（向下兼容旧逻辑）
           [ -z "$BACKEND_ENABLED" ] && BACKEND_ENABLED="true"
@@ -73,11 +73,11 @@ jobs:
 
       - name: Install dependencies
         run: |
-          echo "安装依赖（不包含可选依赖）..."
+          echo "Install dependencies（Does not contain optional dependencies）..."
           if npm ci --no-optional; then
             echo "✅ npm ci 成功"
           else
-            echo "⚠️ npm ci 失败，将使用npm install更新lock文件"
+            echo "⚠️ npm ci fail，Will use npm install update lock file"
             npm install --no-optional
           fi
 
@@ -98,12 +98,12 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
-          echo "检查并创建D1数据库..."
+          echo "Check and create D1 database..."
           DATABASE_LIST=$(npx wrangler d1 list --json 2>/dev/null || echo "[]")
           EXISTING_DB=$(echo "$DATABASE_LIST" | jq -r '.[] | select(.name=="cloudpaste-db") | .uuid')
 
           if [ -n "$EXISTING_DB" ]; then
-            echo "✅ 找到D1数据库: $EXISTING_DB"
+            echo "✅ Find D1 database: $EXISTING_DB"
             DATABASE_ID=$EXISTING_DB
           else
             CREATE_OUTPUT=$(npx wrangler d1 create cloudpaste-db 2>&1)
@@ -118,7 +118,7 @@ jobs:
               DATABASE_ID=$(echo "$LIST_OUTPUT" | jq -r '.[] | select(.name=="cloudpaste-db") | .uuid')
 
               if [ -z "$DATABASE_ID" ]; then
-                echo "❌ 无法创建或找到D1数据库"
+                echo "❌ Unable to create or find D1 database"
                 exit 1
               fi
             fi
@@ -132,21 +132,21 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
-          npx wrangler d1 execute cloudpaste-db --file=./schema.sql || echo "表可能已存在，继续部署"
+          npx wrangler d1 execute cloudpaste-db --file=./schema.sql || echo "The table may already exist，Continue deployment"
 
       - name: Resolve ENCRYPTION_SECRET for deploy
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
-          echo "检查 ENCRYPTION_SECRET 配置..."
+          echo "examine ENCRYPTION_SECRET Configuration..."
 
-          # 1) 如果 Worker 里已存在 ENCRYPTION_SECRET（作为 Secret），则保持不变（跳过）
+          # 1) if Worker already exists ENCRYPTION_SECRET（as Secret），then remains unchanged（跳过）
           set +e
           SECRET_LIST_OUTPUT=$(npx wrangler secret list 2>&1)
           set -e
           if echo "$SECRET_LIST_OUTPUT" | grep -q "ENCRYPTION_SECRET"; then
-            echo "✅ Worker 已存在 ENCRYPTION_SECRET（Secret），保持不变"
+            echo "✅ Worker Already exists ENCRYPTION_SECRET（Secret），remain unchanged"
             exit 0
           fi
 
