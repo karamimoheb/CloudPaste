@@ -1,151 +1,150 @@
 export default {
   fsMeta: {
-    // 顶部标题与工具栏
-    title: "元信息管理",
+    // عنوان بالا و نوار ابزار
+    title: "مدیریت فراداده",
     toolbar: {
-      create: "新建元信息",
-      createShort: "新建",
-      refresh: "刷新",
-      refreshing: "刷新中...",
-      refreshShort: "刷",
+      create: "ایجاد فراداده جدید",
+      createShort: "جدید",
+      refresh: "تازه‌سازی",
+      refreshing: "در حال تازه‌سازی...",
+      refreshShort: "تازه",
     },
 
-    // 搜索与统计
+    // جستجو و آمار
     search: {
-      placeholder: "搜索路径...",
-      hint: "客户端搜索，支持路径模糊匹配",
+      placeholder: "جستجوی مسیر...",
+      hint: "جستجوی سمت کلاینت، پشتیبانی از تطبیق تقریبی مسیر",
     },
     stats: {
-      total: "共 {count} 条记录",
-      searchResultTag: "(搜索结果)",
+      total: "مجموع {count} رکورد",
+      searchResultTag: "(نتایج جستجو)",
     },
-    lastRefresh: "上次刷新",
+    lastRefresh: "آخرین تازه‌سازی",
 
-    // 通用文案
+    // متن‌های عمومی
     common: {
-      notSet: "未设置",
-      set: "已设置",
-      inherited: "继承",
-      inheritedSuffix: " (继承)",
-      loading: "加载中...",
-      noDataCell: "无数据",
+      notSet: "تنظیم نشده",
+      set: "تنظیم شده",
+      inherited: "ارث‌بری شده",
+      inheritedSuffix: " (ارث‌بری شده)",
+      loading: "در حال بارگذاری...",
+      noDataCell: "بدون داده",
     },
 
-    // 表格相关
+    // جدول
     table: {
-      path: "路径",
-      headerMarkdown: "顶部说明",
-      footerMarkdown: "底部说明",
-      hidePatterns: "隐藏规则",
-      password: "密码",
-      createdAt: "创建时间",
-      actions: "操作",
-      noData: "暂无元信息记录",
+      path: "مسیر",
+      headerMarkdown: "توضیحات بالایی",
+      footerMarkdown: "توضیحات پایینی",
+      hidePatterns: "قوانین مخفی‌سازی",
+      password: "رمز عبور",
+      createdAt: "زمان ایجاد",
+      actions: "عملیات",
+      noData: "هیچ رکورد فراداده‌ای وجود ندارد",
     },
 
-    // 表单相关
+    // فرم
     form: {
-      titleCreate: "创建元信息",
-      titleEdit: "编辑元信息",
+      titleCreate: "ایجاد فراداده",
+      titleEdit: "ویرایش فراداده",
       tabs: {
-        basic: "基本信息",
-        path: "路径选择",
+        basic: "اطلاعات پایه",
+        path: "انتخاب مسیر",
       },
       path: {
-        label: "路径",
-        required: "路径不能为空",
+        label: "مسیر",
+        required: "مسیر نمی‌تواند خالی باشد",
         placeholder: "/claw",
-        helper: "文件系统路径，必须以 / 开头，可点击右侧按钮选择",
-        selectButton: "选择路径",
+        helper: "مسیر فایل سیستم، باید با / شروع شود؛ می‌توانید از دکمه سمت راست برای انتخاب استفاده کنید",
+        selectButton: "انتخاب مسیر",
       },
       headerMarkdown: {
-        label: "顶部说明 (Markdown)",
-        placeholder: "支持 Markdown 格式的顶部说明...",
-        inheritLabel: "子目录继承此说明",
+        label: "توضیحات بالایی (Markdown)",
+        placeholder: "توضیحات بالایی با پشتیبانی از Markdown...",
+        inheritLabel: "ارث‌بری این توضیح برای زیرپوشه‌ها",
       },
       footerMarkdown: {
-        label: "底部说明 (Markdown)",
-        placeholder: "支持 Markdown 格式的底部说明...",
-        inheritLabel: "子目录继承此说明",
+        label: "توضیحات پایینی (Markdown)",
+        placeholder: "توضیحات پایینی با پشتیبانی از Markdown...",
+        inheritLabel: "ارث‌بری این توضیح برای زیرپوشه‌ها",
       },
       hidePatterns: {
-        label: "隐藏规则 (正则表达式)",
+        label: "قوانین مخفی‌سازی (عبارت منظم)",
         placeholder:
-          "每行一个正则表达式，例如：\n^\\\\..*\n.*\\\\.tmp$\nnode_modules",
-        inheritLabel: "子目录继承隐藏规则",
-        helper: "匹配的文件将在界面中隐藏（每行一个正则表达式）",
+          "هر خط یک عبارت منظم، مثال:\n^\\\\..*\n.*\\\\.tmp$\nnode_modules",
+        inheritLabel: "ارث‌بری قوانین مخفی‌سازی برای زیرپوشه‌ها",
+        helper: "فایل‌های مطابق این الگو در رابط کاربری مخفی می‌شوند (هر خط یک regex)",
       },
       password: {
-        label: "访问密码",
-        placeholderKeep: "留空保持不变",
-        placeholderSetOptional: "设置目录访问密码（可选）",
-        inheritLabel: "子目录继承密码保护",
-        helper: "设置后访问此路径需要验证密码",
+        label: "رمز دسترسی",
+        placeholderKeep: "خالی بگذارید تا تغییر نکند",
+        placeholderSetOptional: "تنظیم رمز دسترسی پوشه (اختیاری)",
+        inheritLabel: "ارث‌بری حفاظت با رمز برای زیرپوشه‌ها",
+        helper: "پس از تنظیم، دسترسی به این مسیر نیاز به تأیید رمز دارد",
       },
       pathSelector: {
-        currentSelection: "当前选择",
-        selectDirectory: "选择目录",
+        currentSelection: "انتخاب فعلی",
+        selectDirectory: "انتخاب پوشه",
         rootLabel: "/",
-        loading: "加载中...",
+        loading: "در حال بارگذاری...",
       },
       actions: {
-        cancel: "取消",
-        create: "创建",
-        creating: "创建中...",
-        update: "更新",
-        updating: "更新中...",
+        cancel: "لغو",
+        create: "ایجاد",
+        creating: "در حال ایجاد...",
+        update: "به‌روزرسانی",
+        updating: "در حال به‌روزرسانی...",
       },
       errors: {
-        submitFailed: "提交失败",
+        submitFailed: "ارسال ناموفق بود",
       },
     },
 
-    // 密码状态
+    // وضعیت رمز
     passwordStatus: {
-      inherited: "继承保护",
-      protected: "已保护",
+      inherited: "حفاظت ارث‌بری شده",
+      protected: "حفاظت شده",
     },
 
-    // 隐藏规则显示
+    // نمایش قوانین مخفی‌سازی
     hidePatternsStatus: {
-      count: "{count} 条",
+      count: "{count} مورد",
     },
 
-    // 删除确认
+    // تأیید حذف
     confirmDelete: {
-      title: "确认删除",
-      message: '确定要删除路径 "{path}" 的元信息吗？',
-      confirm: "删除",
-      cancel: "取消",
+      title: "تأیید حذف",
+      message: 'آیا مطمئن هستید که می‌خواهید فراداده مسیر "{path}" را حذف کنید؟',
+      confirm: "حذف",
+      cancel: "لغو",
     },
 
-    // 列表空态与错误
+    // حالت خالی و خطا
     empty: {
-      noData: "暂无元信息记录",
-      noSearchResults: "未找到匹配的元信息记录",
-      createFirst: "创建第一条记录",
+      noData: "هیچ رکورد فراداده‌ای وجود ندارد",
+      noSearchResults: "هیچ رکورد مطابق با جستجو یافت نشد",
+      createFirst: "اولین رکورد را ایجاد کنید",
     },
 
-    // 成功提示
+    // پیام موفقیت
     success: {
-      created: "元信息创建成功",
-      updated: "元信息更新成功",
-      deleted: "元信息删除成功",
+      created: "فراداده با موفقیت ایجاد شد",
+      updated: "فراداده با موفقیت به‌روزرسانی شد",
+      deleted: "فراداده با موفقیت حذف شد",
     },
 
-    // 错误提示
+    // پیام خطا
     error: {
-      loadFailed: "加载元信息列表失败",
-      createFailed: "创建元信息失败",
-      updateFailed: "更新元信息失败",
-      deleteFailed: "删除元信息失败",
+      loadFailed: "بارگذاری لیست فراداده ناموفق بود",
+      createFailed: "ایجاد فراداده ناموفق بود",
+      updateFailed: "به‌روزرسانی فراداده ناموفق بود",
+      deleteFailed: "حذف فراداده ناموفق بود",
     },
 
-    // 操作按钮
+    // دکمه‌های عملیات
     actions: {
-      edit: "编辑",
-      delete: "删除",
+      edit: "ویرایش",
+      delete: "حذف",
     },
   },
 };
-
