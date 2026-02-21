@@ -1,50 +1,50 @@
 export default {
   search: {
-    title: "文件搜索",
-    placeholder: "搜索文件名...",
+    title: "جستجوی فایل",
+    placeholder: "جستجوی نام فایل...",
 
     scope: {
-      global: "全局搜索",
-      mount: "单盘搜索",
-      directory: "当前及子目录搜索",
+      global: "جستجوی سراسری",
+      mount: "جستجو در یک درایو",
+      directory: "جستجو در پوشه فعلی و زیرپوشه‌ها",
     },
 
     results: {
-      foundInMounts: "在 {mounts} 个挂载点中找到 {count} 个文件",
-      loadMore: "加载更多",
-      loadingMore: "加载更多结果...",
-      noResults: "未找到匹配的文件",
-      noResultsHint: "请尝试调整搜索条件或使用不同的关键词",
+      foundInMounts: "تعداد {count} فایل در {mounts} نقطه اتصال یافت شد",
+      loadMore: "بارگذاری بیشتر",
+      loadingMore: "در حال بارگذاری نتایج بیشتر...",
+      noResults: "فایل مطابقی یافت نشد",
+      noResultsHint: "لطفاً شرایط جستجو را تغییر دهید یا از کلمات کلیدی دیگری استفاده کنید",
 
       item: {
-        copyPath: "复制路径",
+        copyPath: "کپی مسیر",
       },
     },
 
     status: {
-      idle: "请输入搜索关键词",
-      searching: "正在搜索...",
-      failed: "搜索失败",
+      idle: "لطفاً کلمه کلیدی جستجو را وارد کنید",
+      searching: "در حال جستجو...",
+      failed: "جستجو ناموفق بود",
     },
 
     errors: {
-      queryTooShort: "搜索关键词至少需要3个字符",
-      searchFailed: "搜索失败，请稍后重试",
-      loadMoreFailed: "加载更多结果失败",
+      queryTooShort: "کلمه جستجو باید حداقل ۳ کاراکتر باشد",
+      searchFailed: "جستجو ناموفق بود، لطفاً بعداً دوباره تلاش کنید",
+      loadMoreFailed: "بارگذاری نتایج بیشتر ناموفق بود",
     },
 
     history: {
-      recent: "最近搜索",
-      clear: "清除历史",
+      recent: "جستجوهای اخیر",
+      clear: "پاک کردن تاریخچه",
     },
 
     tips: {
-      keywordTips: "支持文件名模糊搜索",
+      keywordTips: "از جستجوی تقریبی نام فایل پشتیبانی می‌شود",
     },
 
     notices: {
-      pathRestricted: "已按你的权限将搜索范围限制为：{path}",
-      passwordFiltered: "已隐藏 {count} 条受密码保护的结果",
+      pathRestricted: "محدوده جستجو بر اساس دسترسی شما به این مسیر محدود شد: {path}",
+      passwordFiltered: "تعداد {count} نتیجه محافظت‌شده با رمز پنهان شد",
     },
   },
 };
