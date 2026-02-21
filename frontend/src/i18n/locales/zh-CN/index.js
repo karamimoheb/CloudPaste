@@ -21,8 +21,8 @@ export default {
   ...pwa,
   ...gallery,
   announcement: {
-    title: "公告",
-    dontShowAgain: "不再提示",
-    gotIt: "我知道了",
+    title: "اعلامیه",
+    dontShowAgain: "دوباره درخواست نکنید",
+    gotIt: "من می بینم",
   },
 };
