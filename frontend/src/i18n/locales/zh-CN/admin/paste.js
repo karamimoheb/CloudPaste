@@ -1,7 +1,7 @@
 export default {
   paste: {
     table: {
-      noData: "暂无文本分享数据",
+      noData: "هنوز داده ای برای اشتراک گذاری متن وجود ندارد",
     },
   },
 };
